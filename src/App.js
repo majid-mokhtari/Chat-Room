@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import { Provider } from 'react-redux';
-import './App.css';
 import AppContainer from './containers/AppContainer'
-import configureStore from './store/store';
 
-const store = configureStore();
+//middleware
+import { Provider } from 'react-redux';
+import { applyMiddleware, createStore } from 'redux'
+import thunkMiddleware from 'redux-thunk';
+import {rootReducer} from './reducers'
+const createStoreWithMiddleware = applyMiddleware(thunkMiddleware)(createStore);
+const store = createStoreWithMiddleware(rootReducer);
 
 class App extends Component {
   render() {
