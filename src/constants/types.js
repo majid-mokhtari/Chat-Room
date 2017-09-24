@@ -1,1 +1,8 @@
-export const LIST_LOADED = "LIST_LOADED"
+export const CHANNELS_LOADED = "CHANNELS_LOADED";
+export const CHANNEL_ADDED = "CHANNEL_ADDED";
+
+export const USERS_LOADED = "USERS_LOADED";
+export const USER_ADDED = "USER_ADDED";
+
+export const MESSAGES_LOADED = "MESSAGES_LOADED";
+export const MESSAGE_ADDED = "MESSAGE_ADDED";

@@ -1,28 +1,36 @@
 import React, {Component} from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as actions from './../actions/listAction';
+import * as actions from './../actions/channelAction';
+import ChannelSection from './../components/channels/ChennelSection.jsx';
+import UserSection from './../components/users/UserSection.jsx';
+import MessageSection from './../components/messages/MessageSection.jsx';
 
 class AppContainer extends Component {
 
     componentWillMount(){
-        this.props.actions.loadList();
+      this.props.actions.loadChannels();
+      this.props.actions.loadUsers();
+      this.props.actions.loadMessages();
     }
 
     render() {
-        console.log(this.props)
+        //const { channels, activeChannelId } = this.props.channelReducer;
         return (
-            <div>Hello wrold</div>
+          <div className="app">
+            <div className="nav" >
+              <ChannelSection {...this.props} />
+              <UserSection {...this.props} />
+            </div>
+            <MessageSection {...this.props} />
+          </div>
         );
     }
 }
 
 
-function mapStateToProps(state) {
-  const {listReducer} = state;
-  return {
-    listReducer,
-  };
+function mapStateToProps({channelReducer} ) {
+  return {channelReducer};
 }
 
 function mapDispatchToProps(dispatch) {

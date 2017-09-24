@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AppContainer from './containers/AppContainer'
+import './App.css'
 
 //middleware
 import { Provider } from 'react-redux';

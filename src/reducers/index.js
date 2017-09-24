@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import { listReducer } from './../reducers/listReducer'
+import { channelReducer } from './../reducers/channelReducer'
 
 export const rootReducer = combineReducers({
-    listReducer
+    channelReducer
 })
