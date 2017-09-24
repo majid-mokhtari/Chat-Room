@@ -4,7 +4,7 @@ import MessageForm from './MessageForm';
 
 
 class MessageSection extends Component {
-
+    
     addMessage(body){
       const { messages, users } = this.props.channelReducer;
       let createdAt = new Date();

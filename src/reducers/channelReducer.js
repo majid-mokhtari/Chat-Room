@@ -4,9 +4,7 @@ const initialState = {
     channels: [],
     activeChannel: {},
     users: [],
-    activeUserId: 1,
-    messages: [],
-    activeMessageId: 1
+    messages: []
 }
 
 export function channelReducer(state = initialState, action){
@@ -60,7 +58,8 @@ export function channelReducer(state = initialState, action){
         return {
             ...state,
             type: types.CHANNEL_IS_SET,
-            activeChannel: action.payLoad
+            activeChannel: action.payLoad,
+            messages: []
         }
 
         default:
