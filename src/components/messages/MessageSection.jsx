@@ -17,7 +17,7 @@ class MessageSection extends Component {
         const { name } = activeChannel;
         if(!name){
             return ( 
-                <div className="default-message"> Select a channel</div>
+                <div className="default-message"> <span>Select a channel</span></div>
             )
         }
         return (

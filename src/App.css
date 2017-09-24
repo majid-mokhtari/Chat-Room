@@ -62,9 +62,6 @@
   flex: 1;
   overflow-y: auto;
 }
-.message{
-  /*display: flex;*/
-}
 .message > .author{
   flex-basis: 100%;
 }
@@ -73,6 +70,8 @@
 }
 .active {
   background-color: #E8E8E8;
+  border-radius: 10px;
+  font-weight: bold;
 }
 .timestamp{
   color: #808080;
@@ -100,8 +99,8 @@ a{
 }
 
 .default-message{
-  padding: 20px;
-  margin-bottom: 10px;
+  padding-left: 20px;
+  padding-top: 10px;
   height: 45px;
   width: 100%;
   background-color: lightgrey;
@@ -115,4 +114,9 @@ a{
   background-color: #E9E9E9;
   border-radius: 10px;
 
+}
+
+.channels li{
+  margin-bottom: 10px;
+  padding-left: 10px;
 }
