@@ -1,5 +1,6 @@
 export const CHANNELS_LOADED = "CHANNELS_LOADED";
 export const CHANNEL_ADDED = "CHANNEL_ADDED";
+export const CHANNEL_IS_SET = "CHANNEL_IS_SET";
 
 export const USERS_LOADED = "USERS_LOADED";
 export const USER_ADDED = "USER_ADDED";

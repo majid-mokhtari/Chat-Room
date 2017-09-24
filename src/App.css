@@ -98,3 +98,21 @@ a{
   height: 100%;
   width: 100%;
 }
+
+.default-message{
+  padding: 20px;
+  margin-bottom: 10px;
+  height: 45px;
+  width: 100%;
+  background-color: lightgrey;
+}
+
+.message{
+  padding: 20px;
+}
+
+.message:hover{
+  background-color: #E9E9E9;
+  border-radius: 10px;
+
+}

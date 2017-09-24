@@ -33,13 +33,19 @@ export function addUser(request){
 
 export function loadMessages() {
     return dispatch => {
-        return dispatch(messagesLoaded([{id: 1, message: "Majid"}]));
+        return dispatch(messagesLoaded([]));
     }
 }
 
 export function addMessage(res){
     return dispatch => {
         return dispatch(messageAdded(res));
+    }
+}
+
+export function setChannel(res){
+    return dispatch => {
+        return dispatch(channelIsSet(res));
     }
 }
 
@@ -81,6 +87,13 @@ function messagesLoaded(res){
 function messageAdded(res){
     return {
         type: types.MESSAGE_ADDED,
+        payLoad: res
+    }
+}
+
+function channelIsSet(res){
+    return {
+        type: types.CHANNEL_IS_SET,
         payLoad: res
     }
 }

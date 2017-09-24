@@ -10,13 +10,8 @@ class ChannelSection extends Component {
       this.props.actions.addChannel({id: channels.length+1, name});
     }
 
-    setChannel(activeChannel){
-      this.setState({activeChannel});
-      // TODO: Get Channels Messages
-    }
-
     render() {
-        const { channels, activeChannelId } = this.props.channelReducer;
+        const { channels, activeChannel } = this.props.channelReducer;
         return (
             <div className='support panel panel-primary'>
                 <div className='panel-heading'>
@@ -26,8 +21,7 @@ class ChannelSection extends Component {
                     <ChannelList 
                         {...this.props} 
                         channels={channels}
-                        setChannel={this.setChannel}
-                        activeChannelId={activeChannelId}
+                        activeChannel={activeChannel}
                     />
                     <ChannelForm 
                         addChannel={this.addChannel.bind(this)}

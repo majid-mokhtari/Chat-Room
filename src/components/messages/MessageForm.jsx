@@ -21,7 +21,7 @@ class MessageForm extends Component{
             type='text'
             ref='message'
           />
-        </div>
+        </div> 
         
       </form>
     )

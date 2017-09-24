@@ -2,7 +2,7 @@ import * as types from './../constants/types'
 
 const initialState = {
     channels: [],
-    activeChannelId: 1,
+    activeChannel: {},
     users: [],
     activeUserId: 1,
     messages: [],
@@ -54,6 +54,13 @@ export function channelReducer(state = initialState, action){
             ...state,
             type: types.MESSAGE_ADDED,
             messages: newMessages
+        }
+
+        case types.CHANNEL_IS_SET:
+        return {
+            ...state,
+            type: types.CHANNEL_IS_SET,
+            activeChannel: action.payLoad
         }
 
         default:

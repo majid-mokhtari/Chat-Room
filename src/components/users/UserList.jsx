@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 class UserList extends Component{
   render(){
-    const { users, activeUserId } = this.props;
+    const { users } = this.props;
     if(!users.length){
       return null;
     }
@@ -13,9 +13,7 @@ class UserList extends Component{
         users.map( user =>{
           return <User 
             user={user}
-            activeUserId={activeUserId}
             key={user.id}
-            {...this.props}
           />
         })
       }</ul>
@@ -24,9 +22,7 @@ class UserList extends Component{
 }
 
 UserList.propTypes = {
-  users: PropTypes.array.isRequired,
-  setUser: PropTypes.func.isRequired,
-  activeUserId: PropTypes.number.isRequired
+  users: PropTypes.array.isRequired
 }
 
 export default UserList

@@ -15,7 +15,7 @@ class UserForm extends Component{
         <div className='form-group'>
           <input 
             className='form-control'
-            placeholder='Add User'
+            placeholder='Set Your Name'
             type='text'
             ref='user'
           />

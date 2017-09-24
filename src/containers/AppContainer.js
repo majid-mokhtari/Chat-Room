@@ -14,12 +14,19 @@ class AppContainer extends Component {
       this.props.actions.loadMessages();
     }
 
+    setChannel(activeChannel){
+      this.props.actions.setChannel(activeChannel);
+    }
+    
     render() {
         //const { channels, activeChannelId } = this.props.channelReducer;
         return (
           <div className="app">
             <div className="nav" >
-              <ChannelSection {...this.props} />
+              <ChannelSection 
+                {...this.props} 
+                setChannel={this.setChannel.bind(this)}
+              />
               <UserSection {...this.props} />
             </div>
             <MessageSection {...this.props} />

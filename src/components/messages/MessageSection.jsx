@@ -5,18 +5,21 @@ import MessageForm from './MessageForm';
 
 class MessageSection extends Component {
 
-    addMessage(message){
-      const { messages } = this.props.channelReducer;
-      this.props.actions.addMessage({id: messages.length+1, message});
-    }
-
-    setMessage(activeMessage){
-      this.setState({activeMessage});
-      // TODO: Get Channels Messages
+    addMessage(body){
+      const { messages, users } = this.props.channelReducer;
+      let createdAt = new Date();
+      let author = users.length > 0 ? users[0].name : 'anonymous';
+      this.props.actions.addMessage({id: messages.length+1, body, createdAt, author});
     }
 
     render() {
-        const { messages, activeMessageId } = this.props.channelReducer;
+        const { messages, activeChannel } = this.props.channelReducer;
+        const { name } = activeChannel;
+        if(!name){
+            return ( 
+                <div className="default-message"> Select a channel</div>
+            )
+        }
         return (
             <div className='support panel panel-primary message-panel'>
                 <div className='panel-heading'>
@@ -26,8 +29,6 @@ class MessageSection extends Component {
                     <MessageList 
                         {...this.props} 
                         messages={messages}
-                        setMessage={this.setMessage}
-                        activeMessageId={activeMessageId}
                     />
                     <MessageForm 
                         addMessage={this.addMessage.bind(this)}

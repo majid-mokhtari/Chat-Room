@@ -1,29 +1,27 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment'
 
 class Message extends Component{
-  onClick(e){
-    e.preventDefault();
-    const {setMessage, message} = this.props;
-    setMessage(message);
-  }
   render(){
-    const {message, activeMessage} = this.props;
-    const active = message === activeMessage ? 'active' : '';
+    const {message} = this.props;
+    const createdAt = moment(message.createdAt).format('MMMM Do YYYY, h:mm:ss a');
     return (
-      <li className={active}>
-        <a onClick={this.onClick.bind(this)}>
-          {message.message}
-        </a>
+      <li className="message">
+        <div className="author">
+          <strong>{message.author}</strong>
+          <i className="timestamp">{createdAt}</i>
+        </div>
+        <div className="body">
+          {message.body}
+        </div>
       </li>
     )
   }
 }
 
 Message.propTypes = {
-  message: PropTypes.object.isRequired,
-  setMessage: PropTypes.func.isRequired,
-  activeMessageId: PropTypes.number.isRequired
+  message: PropTypes.object.isRequired
 }
 
 export default Message

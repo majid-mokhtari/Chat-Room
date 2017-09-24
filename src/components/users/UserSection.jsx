@@ -10,13 +10,8 @@ class UserSection extends Component {
       this.props.actions.addUser({id: users.length+1, name});
     }
 
-    setUser(activeUser){
-      this.setState({activeUser});
-      // TODO: Get Channels Messages
-    }
-
     render() {
-        const { users, activeUserId } = this.props.channelReducer;
+        const { users } = this.props.channelReducer;
         return (
             <div className='support panel panel-primary'>
                 <div className='panel-heading'>
@@ -26,8 +21,6 @@ class UserSection extends Component {
                     <UserList 
                         {...this.props} 
                         users={users}
-                        setUser={this.setUser}
-                        activeUserId={activeUserId}
                     />
                     <UserForm 
                         addUser={this.addUser.bind(this)}
