@@ -14,6 +14,22 @@ class AppContainer extends Component {
       this.props.actions.loadMessages();
     }
 
+    componentDidMount(){
+      this.ws = new WebSocket('ws://echo.websocket.org');
+      this.ws.onmessage = (e) => {
+          const data = JSON.parse(e.data);
+          if(data){
+              this.props.actions.addChannel(data)
+          }
+      }
+      this.ws.onopen = (e) => console.log("Connected")
+      this.ws.onclose = (e) => console.log("Disconnected")
+    }
+
+    addChannel(request){
+      this.ws.send(JSON.stringify(request))
+    }
+
     setChannel(activeChannel){
       this.props.actions.setChannel(activeChannel);
     }
@@ -25,6 +41,7 @@ class AppContainer extends Component {
             <div className="nav" >
               <ChannelSection 
                 {...this.props} 
+                addChannel={this.addChannel.bind(this)}
                 setChannel={this.setChannel.bind(this)}
               />
               <UserSection {...this.props} />

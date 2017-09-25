@@ -7,7 +7,7 @@ class ChannelSection extends Component {
 
     addChannel(name){
       const { channels } = this.props.channelReducer;
-      this.props.actions.addChannel({id: channels.length+1, name});
+      this.props.addChannel({id: channels.length+1, name});
     }
 
     render() {
