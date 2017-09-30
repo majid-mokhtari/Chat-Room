@@ -7,7 +7,7 @@ class UserSection extends Component {
 
     addUser(name){
       const { users } = this.props.channelReducer;
-      this.props.actions.addUser({id: users.length+1, name});
+      this.props.addUser({id: users.length+1, name});
     }
 
     render() {

@@ -17,21 +17,8 @@ class AppContainer extends Component {
 
     componentDidMount(){
       let socket = this.socket = new Socket();
-      socket.on('connect', () => console.log("Connected"));
-      socket.on('disconnect', () => console.log("Disconnect"));
-      socket.on('channel add', this.onAddChannel.bind(this));
-    }
-    
-    onAddChannel(channel){
-      this.props.actions.addChannel(channel)
-    }
-
-    addChannel(request){
-      this.socket.emit('channel add', request);
-    }
-
-    setChannel(activeChannel){
-      this.props.actions.setChannel(activeChannel);
+      socket.on('channel add', (channel) => this.props.actions.addChannel(channel));
+      socket.on('user add', (user) => this.props.actions.addUser(user));
     }
     
     render() {
@@ -41,10 +28,13 @@ class AppContainer extends Component {
             <div className="nav" >
               <ChannelSection 
                 {...this.props} 
-                addChannel={this.addChannel.bind(this)}
-                setChannel={this.setChannel.bind(this)}
+                addChannel={(request) => this.socket.emit('channel add', request)}
+                setChannel={(activeChannel) => this.props.actions.setChannel(activeChannel)}
               />
-              <UserSection {...this.props} />
+              <UserSection 
+                {...this.props} 
+                addUser={(request => this.socket.emit('user add', request))}
+              />
             </div>
             <MessageSection {...this.props} />
           </div>
