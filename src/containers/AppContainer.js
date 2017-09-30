@@ -5,6 +5,7 @@ import * as actions from './../actions/channelAction';
 import ChannelSection from './../components/channels/ChennelSection.jsx';
 import UserSection from './../components/users/UserSection.jsx';
 import MessageSection from './../components/messages/MessageSection.jsx';
+import Socket from './../util/socket'
 
 class AppContainer extends Component {
 
@@ -15,19 +16,18 @@ class AppContainer extends Component {
     }
 
     componentDidMount(){
-      this.ws = new WebSocket('ws://echo.websocket.org');
-      this.ws.onmessage = (e) => {
-          const data = JSON.parse(e.data);
-          if(data){
-              this.props.actions.addChannel(data)
-          }
-      }
-      this.ws.onopen = (e) => console.log("Connected")
-      this.ws.onclose = (e) => console.log("Disconnected")
+      let socket = this.socket = new Socket();
+      socket.on('connect', () => console.log("Connected"));
+      socket.on('disconnect', () => console.log("Disconnect"));
+      socket.on('channel add', this.onAddChannel.bind(this));
+    }
+    
+    onAddChannel(channel){
+      this.props.actions.addChannel(channel)
     }
 
     addChannel(request){
-      this.ws.send(JSON.stringify(request))
+      this.socket.emit('channel add', request);
     }
 
     setChannel(activeChannel){
