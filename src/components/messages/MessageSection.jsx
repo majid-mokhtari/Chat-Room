@@ -6,10 +6,10 @@ import MessageForm from './MessageForm';
 class MessageSection extends Component {
     
     addMessage(body){
-      const { messages, users } = this.props.channelReducer;
+      const { messages, users, activeChannel } = this.props.channelReducer;
       let createdAt = new Date();
       let author = users.length > 0 ? users[0].name : 'anonymous';
-      this.props.actions.addMessage({id: messages.length+1, body, createdAt, author});
+      this.props.addMessage({id: messages.length+1, channelId: activeChannel.id, body, createdAt, author});
     }
 
     render() {
